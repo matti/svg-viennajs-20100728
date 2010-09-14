@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+	<title>SVG Open 2009: SVG vs. Canvas on Trivial Drawing Application</title>
+
+	<script type="text/javascript" src="shjs/sh_main.js"></script>
+	<script type="text/javascript" src="shjs/sh_javascript.js"></script>
+	<script type="text/javascript" src="shjs/sh_html.js"></script>
+
+	<link type="text/css" rel="stylesheet" href="shjs/sh_style.css" />
+
+
+	<style type="text/css">
+
+	body {
+		font-family: sans-serif;
+		font-size: 2.8em;
+		margin: 1.0em;
+		margin-right: 1em;
+	}
+	
+	h1 { font-size: 1.5em; }
+	h2 { font-size: 1.2em; }
+	h3 { font-size: 1.1em; }
+	
+	img {
+		width: 100%;
+	}
+	
+	div.authors, div.title {
+		text-align: center;
+	}
+
+	div.authors { font-size: 0.5em; }
+	
+	h1.title, h2.title {
+		color: rgb(24,95,153); /* andreas blue */
+  		background-color: white;
+	}
+	
+	div.authors {
+		text-align: center;
+	}
+
+	
+	div.authors > div.author > p.name {
+		font-weight: bold;
+	}
+	
+	h2 {
+		clear: both;
+		padding: 0.3em;
+		color: white;
+		background-color:rgb(24,95,153);
+	}
+	
+	div.slide > h3 {
+		margin-top: 2em;
+	}
+	.slide {
+		margin-top: 10em;
+	}
+	.note {
+		color: silver;
+		/* display: none; */
+	}
+	
+	div.spacer {
+		margin-top: 5em;
+	}
+	
+	li {
+		margin-top: 0.8em;
+	}
+	</style>
+</head>
+
+<body onLoad="sh_highlightDocument();">
+	
+<div class="titleslide" id="1">
+
+<div class="title">	
+	<h1 class="title">SVG Minitalk</h1>
+
+	<h2 class="title">Vienna.js JavaScript User Group 28.7.2010</h2>
+</div>
+
+<div class="authors">
+	<div class="author">
+		<p class="name">Matti Paksula</p>
+
+	</div>
+</div>
+
+</div>
+
+
+<div class="slide">
+
+	<h2>About me</h2>
+
+	<ul>
+		<li>Research Assistant at University of Helsinki, Department of Computer Science</li>
+		<li>W3C SVG Interest Group member</li>
+		<li>Ruby on Rails developer at Enemy &amp; Sons Ltd</li>
+	</ul>
+	
+</div>
+
+
+<div class="slide">
+
+	<h2>Abstract</h2>
+
+	<p>Based on SVG Open 2009 paper <a href="http://svgopen.org/2009/papers/54-SVG_vs_Canvas_on_Trivial_Drawing_Application/">SVG vs Canvas on Trivial Drawing Application</a></p>
+		
+	<p> + upcoming SVG Open 2010 paper "From SVG to Canvas and Back"</p>
+
+	<ul>
+		<li>SVG? Why should we care?</li>
+		<li>JavaScript and SVG</li>
+		<li>What about Canvas?</li>
+		<li>Support?</li>
+	</ul>
+
+</div>
+
+<div class="slide">
+	<h2>SVG</h2>
+
+<pre class="sh_html">
+&lt;svg xmlns:svg=&quot;http://www.w3.org/2000/svg&quot;
+	xmlns=&quot;http://www.w3.org/2000/svg&quot; 
+	viewBox=&quot;0 0 200 100&quot;
+	width=&quot;200px&quot; height=&quot;100px&quot;&gt; 
+ 
+&lt;rect x=&quot;60&quot; y=&quot;20&quot; height=&quot;60&quot; width=&quot;60&quot;
+	style=&quot;stroke:none; fill:#00ff00;&quot; /&gt;   
+ 
+&lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;30&quot;
+	style=&quot;stroke:none; fill:#ff0000;&quot;/&gt; 
+ 
+&lt;/svg&gt;	
+</pre>
+
+	<p>
+		<img src="sample1.svg" />
+	</p>
+
+<pre class="sh_html">
+&lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;30&quot;
+	style=&quot;stroke:none; fill:#ff0000;&quot;/&gt; 
+&lt;rect x=&quot;60&quot; y=&quot;20&quot; height=&quot;60&quot; width=&quot;60&quot;
+	style=&quot;stroke:none; fill:#00ff00;&quot; /&gt;   	
+</pre>
+
+	<p>
+		<img src="sample2.svg" />
+	</p>
+
+	<h3>How about using &lt;canvas&gt; for shapes?</h3>
+	
+	<ul>
+		<li>It's for <em>bitmaps</em></li>
+		<li>Not accessible</li>
+		<li>..one more thing soon</li>
+	</ul>	
+</div>
+
+
+
+<div class="slide">
+	<h2>Motivation part 1</h2>
+	
+	<div class="spacer"></div>
+	
+	<p>
+		<img src="longcat.jpg" alt="Longcat"/>
+	</p>
+	
+	<ul>
+		<li>Proposed height of the Longcat is 3.5 x Petronas Towers [Encyclopedia dramatica]</li>
+		<li>&rarr; &lt;canvas&gt; (bitmap) does not scale.</li>
+	</ul>	
+
+	<div class="spacer"></div>
+	
+	<p>
+		<strong>SVG however..</strong>
+
+		<img src="longcat.svg" alt="Vectorized longcat" />
+		<br/>
+		
+		<strong>..scales</strong>
+	</p>
+</div>
+
+<div class="slide">
+	<h2>Motivation part 2</h2>
+	
+	<ul>
+		<li>Scene graph: elements receive clicks, ordering</li>
+		<li><strong>huge</strong> overhead to implement with JavaScript</li>
+	</ul>
+	
+	<h3>Bad and good canvas</h3>
+	
+	<ul>
+		<li>Bad: <a href="http://www.raymondhill.net/puzzle-rhill/jigsawpuzzle-rhill.php">Jigsaw puzzle</a>
+			<ul>
+				<li>Implementing almost everything that's native in SVG, <span class="note">2800 lines of JavaScript</span></li>
+			</ul>
+		</li>
+		<li>Good:<a href="http://www.nihilogic.dk/labs/wolf/">Wolfenstein 3D</a></li>
+	</ul>
+
+	
+</div>
+
+
+
+<div class="slide">	
+	<h2>Vectors &lt;3 bitmaps</h2>
+
+	<ul>
+		<li><a href="http://db.cs.helsinki.fi/~paksula/svg_open_2009/5-yodawg.xhtml">Combined SVG and Canvas</a></li>
+		<li><a href="file:///C:/Users/paksula/Documents/svg/2010/5-yodawg.xhtml">2010 edition</a></li>
+		<li><a href="http://db.cs.helsinki.fi/~paksula/svg_open_2009/6-svgedit_canvaspaint.html">SVG-Edit + CanvasPaint</a></li>		
+	</ul>
+
+
+</div>
+
+<div class="slide">
+	<h2>JavaScript interaction</h2>
+	
+	<p><a href="http://www.pottisjs.com">PottisJs.com</a>, a Proof-of-Concept SVG Interaction Library</a></p>
+</div>
+
+
+<div class="slide">
+	<h2>Support</h2>
+
+	<ul>
+		<li>Getting better..</li>
+		<li>IE9 will support SVG</li>
+	</ul>
+		
+	<p>
+		<a href="http://www.codedread.com/svg-support.php">http://www.codedread.com/svg-support.php</a><br/>
+		<img src="svg-support.png" alt="SVG support table"/>
+	</p>	
+</div>
+
+
+<div class="slide">
+	<h2>Conclusions</h2>
+	
+	<p>HTML5, JS, canvas <strong>and</strong> <em>SVG</em> are needed to replace Flash</p>
+
+	<div class="spacer">
+		<strong>Thank you</strong>
+	</div>
+</div>
+
+</body>
+</html>
